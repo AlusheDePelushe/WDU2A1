@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras de Salud - Vida Saludable</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        // Función para calcular IMC
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById("peso").value);
+            const altura = parseFloat(document.getElementById("altura").value) / 100; // cm → m
+            const resultado = document.getElementById("resultadoIMC");
+
+            if (peso > 0 && altura > 0) {
+                const imc = (peso / (altura * altura)).toFixed(2);
+                let mensaje = "";
+
+                if (imc < 18.5) mensaje = "Bajo peso";
+                else if (imc < 24.9) mensaje = "Peso normal";
+                else if (imc < 29.9) mensaje = "Sobrepeso";
+                else mensaje = "Obesidad";
+
+                resultado.textContent = `Tu IMC es ${imc} → ${mensaje}`;
+            } else {
+                resultado.textContent = "Por favor ingresa valores válidos.";
+            }
+        }
+
+        // Función para estimar calorías diarias (fórmula de Harris-Benedict simplificada)
+        function calcularCalorias() {
+            const peso = parseFloat(document.getElementById("pesoCal").value);
+            const altura = parseFloat(document.getElementById("alturaCal").value);
+            const edad = parseInt(document.getElementById("edad").value);
+            const sexo = document.getElementById("sexo").value;
+            const actividad = parseFloat(document.getElementById("actividad").value);
+            const resultado = document.getElementById("resultadoCal");
+
+            if (peso > 0 && altura > 0 && edad > 0) {
+                let bmr;
+                if (sexo === "hombre") {
+                    bmr = 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * edad);
+                } else {
+                    bmr = 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * edad);
+                }
+
+                const calorias = (bmr * actividad).toFixed(0);
+                resultado.textContent = `Tu requerimiento calórico estimado es de ${calorias} kcal por día.`;
+            } else {
+                resultado.textContent = "Completa todos los campos correctamente.";
+            }
+        }
+    </script>
+</head>
+<body>
+<body>
+    <div id="Encabezado">
+        <h1>Vida Saludable Hoy</h1>
+        <p>Tu guía para un estilo de vida equilibrado</p>
+    </div>
+
+    <div id="Menu">
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="nutricion-basica.html">Nutrición</a>
+            <a href="ejercicios-en-casa.html">Ejercicios</a>
+            <a href="salud-mental.html">Salud Mental</a>
+            <a href="recetas-saludables.html">Recetas</a>
+            <a href="mitos-y-verdades.html">Mitos</a>
+            <a href="testimonios.html">Testimonios</a>
+            <a href="calculadora-salud.html">Calculadoras</a>
+            <a href="blog.html">Blog</a>
+            <a href="formulario-visitantes.html">Únete</a>
+        </nav>
+    </div>
+    <main>
+        <!-- Calculadora de IMC -->
+        <section class="calculadora">
+            <h2>Calculadora de IMC</h2>
+            <p>Introduce tus datos para conocer tu Índice de Masa Corporal.</p>
+            <div class="formulario">
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" placeholder="Ej. 70">
+                
+                <label for="altura">Altura (cm):</label>
+                <input type="number" id="altura" placeholder="Ej. 170">
+
+                <button onclick="calcularIMC()">Calcular</button>
+                <p id="resultadoIMC" class="resultado"></p>
+            </div>
+        </section>
+
+        <!-- Calculadora de Calorías -->
+        <section class="calculadora">
+            <h2>Calculadora de Calorías</h2>
+            <p>Conoce cuántas calorías necesitas al día según tu actividad.</p>
+            <div class="formulario">
+                <label for="pesoCal">Peso (kg):</label>
+                <input type="number" id="pesoCal" placeholder="Ej. 70">
+
+                <label for="alturaCal">Altura (cm):</label>
+                <input type="number" id="alturaCal" placeholder="Ej. 170">
+
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" placeholder="Ej. 30">
+
+                <label for="sexo">Sexo:</label>
+                <select id="sexo">
+                    <option value="hombre">Hombre</option>
+                    <option value="mujer">Mujer</option>
+                </select>
+
+                <label for="actividad">Nivel de actividad:</label>
+                <select id="actividad">
+                    <option value="1.2">Sedentario</option>
+                    <option value="1.375">Ligero (ejercicio 1-3 veces/semana)</option>
+                    <option value="1.55">Moderado (ejercicio 3-5 veces/semana)</option>
+                    <option value="1.725">Activo (ejercicio 6-7 veces/semana)</option>
+                    <option value="1.9">Muy activo (entrenamientos intensos)</option>
+                </select>
+
+                <button onclick="calcularCalorias()">Calcular</button>
+                <p id="resultadoCal" class="resultado"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Vida Saludable | Herramientas interactivas</p>
+    </footer>
+</body>
+</html>
