@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vida Saludable Hoy - [Nombre de la Página]</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Vida Saludable Hoy - Formulario de Visitantes</title>
+    <link rel="stylesheet" href=".css/style.css">
+
 </head>
 <body>
     <div id="Encabezado">
@@ -27,28 +28,316 @@
         </nav>
     </div>
 
-<!-- Contenido Principal -->
+    <!-- Contenido Principal -->
     <main>
-        <section class="formulario-unete">
-            <h2>Formulario de Suscripción</h2>
-            <form action="#" method="post">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" placeholder="tuemail@ejemplo.com" required>
-
-                <button type="submit">Suscribirme</button>
+        <section class="formulario-visitantes">
+            <h2>Formulario de Registro de Visitantes</h2>
+            <form id="visitorForm" action="#" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo">
+                        <div class="error" id="nombreError">Por favor ingresa tu nombre completo</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" placeholder="tuemail@ejemplo.com">
+                        <div class="error" id="emailError">Por favor ingresa un correo electrónico válido</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Número de teléfono">
+                        <div class="error" id="telefonoError">Por favor ingresa un número de teléfono válido (solo números)</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edad">Edad:</label>
+                        <input type="text" id="edad" name="edad" placeholder="Tu edad">
+                        <div class="error" id="edadError">Por favor ingresa tu edad (solo números)</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" placeholder="Tu dirección">
+                        <div class="error" id="direccionError">Por favor ingresa tu dirección</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="codigoPostal">Código postal:</label>
+                        <input type="text" id="codigoPostal" name="codigoPostal" placeholder="Código postal">
+                        <div class="error" id="codigoPostalError">Por favor ingresa un código postal válido (solo números)</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="interes">Principal interés en Vida Saludable Hoy:</label>
+                        <select id="interes" name="interes">
+                            <option value="">Selecciona una opción</option>
+                            <option value="nutricion">Nutrición</option>
+                            <option value="ejercicio">Ejercicio</option>
+                            <option value="salud-mental">Salud Mental</option>
+                            <option value="recetas">Recetas Saludables</option>
+                            <option value="mitos">Mitos y Verdades</option>
+                        </select>
+                        <div class="error" id="interesError">Por favor selecciona tu interés principal</div>
+                    </div>
+                </div>
+                
+                <div class="radio-group">
+                    <h3>¿Cómo nos conociste?</h3>
+                    <div class="radio-options">
+                        <div class="radio-item">
+                            <input type="radio" id="redes-sociales" name="conocimiento" value="redes-sociales">
+                            <label for="redes-sociales">Redes Sociales</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="recomendacion" name="conocimiento" value="recomendacion">
+                            <label for="recomendacion">Recomendación</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="busqueda" name="conocimiento" value="busqueda">
+                            <label for="busqueda">Búsqueda en Internet</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="otro" name="conocimiento" value="otro">
+                            <label for="otro">Otro</label>
+                        </div>
+                    </div>
+                    <div class="error" id="conocimientoError">Por favor selecciona cómo nos conociste</div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <h3>¿Qué temas te interesan? (Selecciona todos los que apliquen)</h3>
+                    <div class="checkbox-options">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="alimentacion" name="intereses" value="alimentacion">
+                            <label for="alimentacion">Alimentación Saludable</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fitness" name="intereses" value="fitness">
+                            <label for="fitness">Fitness en Casa</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="mindfulness" name="intereses" value="mindfulness">
+                            <label for="mindfulness">Mindfulness</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="suenos" name="intereses" value="suenos">
+                            <label for="suenos">Hábitos de Sueño</label>
+                        </div>
+                    </div>
+                    <div class="error" id="interesesError">Por favor selecciona al menos un tema de interés</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="comentarios">Comentarios adicionales:</label>
+                        <textarea id="comentarios" name="comentarios" rows="4" placeholder="Tus comentarios o sugerencias"></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit">Enviar Registro</button>
             </form>
-            <p class="mensaje">✨ Prometemos no enviarte spam, solo contenido saludable.</p>
+            <p class="mensaje">✨ Prometemos no enviarte spam, solo contenido saludable y útil para tu bienestar.</p>
         </section>
     </main>
 
-
-
     <div id="PiedePagina">
-        <p>© 2024 Vida Saludable hoy - Todos los derechos reservados</p>
+        <p>© 2024 Vida Saludable Hoy - Todos los derechos reservados</p>
         <p>Contáctanos: info@vidasaludablehoy.com</p>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('visitorForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset previous errors
+                resetErrors();
+                
+                // Validate all fields
+                const isValid = validateForm();
+                
+                if (isValid) {
+                    alert('¡Registro exitoso! Gracias por unirte a Vida Saludable Hoy.');
+                    form.reset();
+                }
+            });
+            
+            function resetErrors() {
+                const errorElements = document.querySelectorAll('.error');
+                errorElements.forEach(error => {
+                    error.style.display = 'none';
+                });
+                
+                const invalidInputs = document.querySelectorAll('.invalid');
+                invalidInputs.forEach(input => {
+                    input.classList.remove('invalid');
+                });
+            }
+            
+            function validateForm() {
+                let isValid = true;
+                
+                // Validate text fields
+                if (!validateField('nombre')) {
+                    showError('nombreError');
+                    isValid = false;
+                }
+                
+                if (!validateEmail('email')) {
+                    showError('emailError');
+                    isValid = false;
+                }
+                
+                if (!validateNumericField('telefono')) {
+                    showError('telefonoError');
+                    isValid = false;
+                }
+                
+                if (!validateNumericField('edad')) {
+                    showError('edadError');
+                    isValid = false;
+                }
+                
+                if (!validateField('direccion')) {
+                    showError('direccionError');
+                    isValid = false;
+                }
+                
+                if (!validateNumericField('codigoPostal')) {
+                    showError('codigoPostalError');
+                    isValid = false;
+                }
+                
+                // Validate select field
+                if (!validateSelect('interes')) {
+                    showError('interesError');
+                    isValid = false;
+                }
+                
+                // Validate radio buttons
+                if (!validateRadioButtons('conocimiento')) {
+                    showError('conocimientoError');
+                    isValid = false;
+                }
+                
+                // Validate checkboxes
+                if (!validateCheckboxes('intereses')) {
+                    showError('interesesError');
+                    isValid = false;
+                }
+                
+                if (!isValid) {
+                    alert('Por favor revisa los campos marcados en rojo. Asegúrate de llenar todos los campos requeridos correctamente.');
+                }
+                
+                return isValid;
+            }
+            
+            function validateField(fieldId) {
+                const field = document.getElementById(fieldId);
+                const value = field.value.trim();
+                
+                if (value === '') {
+                    field.classList.add('invalid');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function validateEmail(fieldId) {
+                const field = document.getElementById(fieldId);
+                const value = field.value.trim();
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (value === '' || !emailPattern.test(value)) {
+                    field.classList.add('invalid');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function validateNumericField(fieldId) {
+                const field = document.getElementById(fieldId);
+                const value = field.value.trim();
+                
+                if (value === '' || isNaN(value) || value <= 0) {
+                    field.classList.add('invalid');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function validateSelect(fieldId) {
+                const field = document.getElementById(fieldId);
+                const value = field.value;
+                
+                if (value === '') {
+                    field.classList.add('invalid');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function validateRadioButtons(name) {
+                const radios = document.querySelectorAll(`input[name="${name}"]`);
+                let isChecked = false;
+                
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        isChecked = true;
+                    }
+                });
+                
+                if (!isChecked) {
+                    radios.forEach(radio => {
+                        radio.classList.add('invalid');
+                    });
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function validateCheckboxes(name) {
+                const checkboxes = document.querySelectorAll(`input[name="${name}"]`);
+                let isChecked = false;
+                
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        isChecked = true;
+                    }
+                });
+                
+                if (!isChecked) {
+                    checkboxes.forEach(checkbox => {
+                        checkbox.classList.add('invalid');
+                    });
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function showError(errorId) {
+                const errorElement = document.getElementById(errorId);
+                errorElement.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
